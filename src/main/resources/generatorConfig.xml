@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <classPathEntry location="C:\install\Maven_repository\repository\mysql\mysql-connector-java\8.0.13\mysql-connector-java-8.0.13.jar"/>
+
+    <context id="MySQL" targetRuntime="MyBatis3Simple">
+        <property name="beginningDelimiter" value="`"/>
+        <property name="endingDelimiter" value="`"/>
+
+        <!-- 控制注释生成 -->
+        <commentGenerator>
+            <property name="suppressAllComments" value="false"/>
+            <property name="suppressDate" value="true"/>
+        </commentGenerator>
+
+        <jdbcConnection
+                driverClass="com.mysql.jdbc.Driver"
+                connectionURL="jdbc:mysql://127.0.0.1/stu_myself?serverTimezone=UTC"
+                userId="root"
+                password="1973">
+            <property name="nullCatalogMeansCurrent" value="true"/>
+        </jdbcConnection>
+
+        <!-- 生成Java 实体 -->
+        <javaModelGenerator targetPackage="com.ljh.domain" targetProject="./src/main/java">
+            <!--<property name="rootClass" value="com.cloudbility.cloudcost.domain.AbstractEntity"/>-->
+        </javaModelGenerator>
+
+        <!-- 生成XML Mapper -->
+        <sqlMapGenerator targetPackage="com.ljh.mapper" targetProject="./src/main/resources">
+        </sqlMapGenerator>
+
+        <!-- 生成Java Mapper 接口 -->
+        <javaClientGenerator targetPackage="com.ljh.mapper" targetProject="./src/main/java"
+                             type="XMLMAPPER">
+            <property name="rootInterface" value="com.ljh.mapper.BaseMapper"/>
+        </javaClientGenerator>
+
+        <!--<table tableName="user" domainObjectName="User">-->
+            <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+            <!--<columnOverride column="status" javaType="boolean"/>-->
+            <!--<columnOverride column="online" javaType="boolean"/>-->
+        <!--</table>-->
+
+        <table tableName="user" domainObjectName="User">
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"/>
+           <!-- <columnOverride column="team_type" javaType="com.cloudbility.cloudcost.domain.enums.TeamType"/>
+            <columnOverride column="bill_scale_limit" javaType="java.math.BigDecimal"/>-->
+        </table>
+
+        <!--<table tableName="login_history" domainObjectName="LoginHistory">-->
+            <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+        <!--</table>-->
+
+
+        <!--<table tableName="open_account" domainObjectName="OpenAccount">-->
+            <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+            <!--<columnOverride column="gender" javaType="com.cloudbility.cloudcost.domain.enums.Gender"/>-->
+            <!--<columnOverride column="oauth_type" javaType="com.cloudbility.cloudcost.domain.enums.OauthType"/>-->
+            <!--<columnOverride column="subscribe" javaType="boolean"/>-->
+        <!--</table>-->
+
+
+        <!--<table tableName="team">-->
+            <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+            <!--<columnOverride column="team_type" javaType="com.cloudbility.cloudcost.domain.enums.TeamType"/>-->
+            <!--<columnOverride column="status" javaType="com.cloudbility.cloudcost.domain.enums.TeamStatus"/>-->
+            <!--<columnOverride column="quota_exceed" javaType="java.math.BigDecimal"/>-->
+            <!--<columnOverride column="currency" javaType="com.cloudbility.cloudcost.domain.enums.Currency"/>-->
+        <!--</table>-->
+        <!--<table tableName="team_member">-->
+            <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+        <!--</table>-->
+
+
+
+        <!--<table tableName="role" domainObjectName="Role">-->
+            <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+        <!--</table>-->
+
+        <!--<table tableName="role_function" domainObjectName="RoleFunction">-->
+            <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+        <!--</table>-->
+
+        <!--<table tableName="function_authority" domainObjectName="FunctionAuthority">-->
+            <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+        <!--</table>-->
+        <!--<table tableName="role_user" domainObjectName="RoleUser">-->
+            <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+        <!--</table>-->
+        <!--<table tableName="cloud_account">-->
+            <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+            <!--<columnOverride column="support_cloud" javaType="com.cloudbility.cloudcost.domain.enums.SupportCloud"/>-->
+            <!--<columnOverride column="status" javaType="com.cloudbility.cloudcost.domain.enums.AccessKeyStatus"/>-->
+        <!--</table>-->
+        <!--<table tableName="billing_pull_task">-->
+            <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+            <!--<columnOverride column="status" javaType="com.cloudbility.cloudcost.domain.enums.BillingPullStatus"/>-->
+            <!--<columnOverride column="billing_pull_type" javaType="com.cloudbility.cloudcost.domain.enums.BillingPullType"/>-->
+        <!--</table>-->
+        <!--<table tableName="advice_report_overview">-->
+            <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+            <!--<columnOverride column="currency" javaType="com.cloudbility.cloudcost.domain.enums.Currency"/>-->
+            <!--<columnOverride column="reported_date" javaType="java.time.LocalDate"/>-->
+        <!--</table>-->
+        <!--<table tableName="role_cloud_account">-->
+            <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+        <!--</table>-->
+        <!--<table tableName="aliyun_billing_overview">-->
+            <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+            <!--<columnOverride column="subscription_type" javaType="com.cloudbility.cloudcost.domain.enums.aliyun.AliyunSubscriptionType"/>-->
+            <!--<columnOverride column="billing_type" javaType="com.cloudbility.cloudcost.domain.enums.aliyun.AliyunBillingType"/>-->
+            <!--<columnOverride column="currency" javaType="com.cloudbility.cloudcost.domain.enums.Currency"/>-->
+        <!--</table>-->
+        <!--<table tableName="cloud_balance">-->
+            <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+            <!--<columnOverride column="support_cloud" javaType="com.cloudbility.cloudcost.domain.enums.SupportCloud"/>-->
+            <!--<columnOverride column="currency" javaType="com.cloudbility.cloudcost.domain.enums.Currency"/>-->
+        <!--</table>-->
+        <!--<table tableName="cloud_product">-->
+            <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+            <!--<columnOverride column="support_cloud" javaType="com.cloudbility.cloudcost.domain.enums.SupportCloud"/>-->
+            <!--<columnOverride column="category" javaType="com.cloudbility.cloudcost.domain.enums.ProductCategory"/>-->
+            <!--<columnOverride column="sub_category" javaType="com.cloudbility.cloudcost.domain.enums.ProductSubCategory"/>-->
+        <!--</table>-->
+        <!--<table tableName="aliyun_instance">-->
+            <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+            <!--<columnOverride column="status " javaType="com.cloudbility.cloudcost.domain.enums.InstanceStatus"/>-->
+            <!--<columnOverride column="sub_status " javaType="com.cloudbility.cloudcost.domain.enums.InstanceStatus"/>-->
+        <!--</table>-->
+        <!--<table tableName="team_costscale_history">-->
+            <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+            <!--<columnOverride column="currency" javaType="com.cloudbility.cloudcost.domain.enums.Currency"/>-->
+        <!--</table>-->
+        <!--<table tableName="cloud_billing_budget_overview">-->
+            <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+            <!--<columnOverride column="currency" javaType="com.cloudbility.cloudcost.domain.enums.Currency"/>-->
+        <!--</table>-->
+        <!--<table tableName="exchange_rate">-->
+            <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+            <!--<columnOverride column="currency" javaType="com.cloudbility.cloudcost.domain.enums.Currency"/>-->
+        <!--</table>-->
+        <!--<table tableName="order_pull_task">-->
+            <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+        <!--</table>-->
+        <!--<table tableName="report_setting">-->
+            <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+        <!--</table>-->
+        <!--<table tableName="cloud_billing_overview">-->
+            <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+            <!--<columnOverride column="support_cloud" javaType="com.cloudbility.cloudcost.domain.enums.SupportCloud"/>-->
+            <!--<columnOverride column="subscription_type" javaType="com.cloudbility.cloudcost.domain.enums.aliyun.AliyunSubscriptionType"/>-->
+            <!--<columnOverride column="billing_type" javaType="com.cloudbility.cloudcost.domain.enums.aliyun.AliyunBillingType"/>-->
+            <!--<columnOverride column="currency" javaType="com.cloudbility.cloudcost.domain.enums.Currency"/>-->
+        <!--</table>-->
+        <!--<table tableName="cloud_instance">-->
+            <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+            <!--<columnOverride column="status " javaType="com.cloudbility.cloudcost.domain.enums.InstanceStatus"/>-->
+            <!--<columnOverride column="sub_status " javaType="com.cloudbility.cloudcost.domain.enums.InstanceStatus"/>-->
+        <!--</table>-->
+       <!-- <table tableName="cloud_product_budget">
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"/>
+            <columnOverride column="support_cloud" javaType="com.cloudbility.cloudcost.domain.enums.SupportCloud"/>
+            <columnOverride column="currency" javaType="com.cloudbility.cloudcost.domain.enums.Currency"/>
+        </table>-->
+        <!--<table tableName="cloud_product_budget_setting">-->
+            <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"/>-->
+            <!--<columnOverride column="support_cloud" javaType="com.cloudbility.cloudcost.domain.enums.SupportCloud"/>-->
+        <!--</table>-->
+    </context>
+</generatorConfiguration>

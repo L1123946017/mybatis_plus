@@ -1,0 +1,89 @@
+spring:
+  datasource:
+    #    driver-class-name: org.h2.Driver
+    #    schema: classpath:db/schema-h2.sql
+    #    data: classpath:db/data-h2.sql
+    url: jdbc:mysql://localhost:3306/stu_myself?serverTimezone=UTC
+    username: root
+    password: 1973
+    driver-class-name: com.mysql.jdbc.Driver
+
+  flyway:
+    enabled: true
+    baseline-on-migrate: true
+    # 是否开启校验 若开启校验，flyway在启动校验失败时会清空数据库中的表和删除表结构
+    validate-on-migrate: false
+    clean-disabled: true
+    locations: classpath:/migration
+  redis:
+    database: 0
+    host: 192.168.25.135
+    port: 6379
+    timeout: 5000
+    jedis:
+      pool:
+        max-active: 8
+        max-wait: -1
+        max-idle: 8
+        min-idle: 0
+  data:
+    mongodb:
+      host: 192.168.25.135
+      port: 27017
+      username: Mamba
+      password: '1973'
+      database: mymongodb
+      authentication-database: admin
+  resources:
+    static-locations: classpath:/static/
+  messages:
+    baseProperties: i18n/**/*.properties
+    encoding: UTF-8
+    cache-duration: -1
+    use-code-as-default-message: true
+
+#      uri: mongodb://Mamba:1973@192.168.25.135:27017/mymongodb
+
+
+
+
+rocketmq:
+  #生产者
+  producer:
+    isOnOff: on
+    groupName: springboot-rocketmq
+    namesrvAddr: 127.0.0.1:9876
+    maxMessageSize: 4096
+    sendMsgTimeout: 3000
+    retryTimesWhenSendFailed: 2
+  #消费者
+  consumer:
+    isOnOff: on
+    groupName: springboot-rocketmq
+    namesrvAddr: 127.0.0.1:9876
+    topics: DemoTopic
+    consumeThreadMin: 20
+    consumeThreadMax: 64
+    consumeMessageBatchMaxSize: 1
+
+
+
+
+alipay:
+  url: https://openapi.alipay.com/gateway.do
+  app-id: 2019091667419699
+  app-pricate-key: MIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCHO9Qhyq7VxgSzl7XZ9EPQkjXtgT3ERRJYEIKku467/FTn3jpiw/nc3P8NDjABQ03r50A2eHMMS1kOTlv4PrxduytfZgFPdoDyaghCBi3OWKbCD1K559quh2qvvKvqJlzhIlosNUXVLSxF0JA0QCRo4WqFNxyS8yi+O8Tdt2YBHZTUnwEZi+8UMCrOnTmZndH1PsfBntKGxrGAEqzmPXjdxSylvAZ9iKShLxAf6pd9iBnGSQXJxbro1tps/4YC2Id2BQ3gJGCZT9iIvDjfw7uLKs7nuDQKRH0JcQogiVfoGRYoLStqwZ02di8xgjvfR9lmQtBptuwxArUbGtzeXYwzAgMBAAECggEAI4VFfPK95Yyzo3CP5YXRYjFlVNMDpE/4N4Vuq1JQdXQb4SNv9o0/ThIGNCmr1kkVaIc/SI9uuKX56FYQti3UUFJfXBlw8qxPxlyvepgg4/hJJOPdeNM7j2gmT66hAUm+T6w0PzRm+U16OYREvFS0u4+p6P/G05pm80DDvvDzLAt1UhEynftTtVf9o4rC3e3Yo8ZnN7zxPub5GKCIA/dujhfHMdJQn85PgMjrUdddf+YmAkoHaGm7JzOjI1V2ndKp8o/ID1UNnXSoQk09qrx1qmPJ/Nrd3xDXyNU+zKTwdVF04+fh9uY1izz+c/RKL/aEnFOlkmGbsLYTAbe6ptjP4QKBgQC8FaqyIpg7XbTfLxglUBg3zY74q1JpRKbIZYy1+E2oSDBIgQ9wvhMA9kr26uLpBhQQEDY5MaKPkGQ5Xw8splW9vshTYeRUABpGUuNt2GAnKLxz2eioOkFjRInNQYtN2YP2HMgK3o3IWcHjDCZsVaPjstEY6oEGWzXx2k8UqKTVqQKBgQC4EK5Xmjag/o3PkjBdS+ukioIMkHOZHhKV6vCOBIUl1eGrR7gPKHBxzTVa/OTzgvgZaL2PQdXX5uBYyy+ktiruCzTWWJQmI+16T/Bo4GTLCjiDyufOSigthgLBd9Ej7gPTje00ULaiuSczPJtXEuUeYIvF+0CD2y/Xc6z+CVpEewKBgGSmd50yNCL4x3Tz38j/7qXWI99g1w4sRdBRv5YVlYEreGMkZZ3gqYzHQGCYW+t1bEEYW9wJesO28ltdSmKLdLDAqrUsWqK1F1pwuvIqa3IpM4gPoZh87EbyA4hKvgBgGWUYC9j9NgR0O/SDqQAqaDTOmWTrATbkkp6lQ9J7WRJZAoGBAK7PmOS2H5/zYnd63dgdnKTerviD0GXhe8FKKkCW5mWypern6FTtES3juQK7IC5teneXVEDUQ+YS7YsnHg6OvGLr3bic08cNZCM//JF+W/vBrz7r3A+9uj7SAZgA1W4MRTIMnvWKmooc0rAEpXujBFs/UkAriXAxIVS8FdYGx+Y1AoGBAJpwzDfSUgGFqXKgHSPLiFJAh7nrkyb+W+KheI47pEgwg2s5CU0Ry2fqA7ST+9YxVONVhZ5yCeKcQp8+3zb6GjDCK1Na/vlckpzvkgGTD4kQoisXai49dKe6680sN4lAHcw2VgHviRLZb7CIukFVcJ9tIoY6EZfyG/32Ksb2JtE+
+  alipay-public-key: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAhzvUIcqu1cYEs5e12fRD0JI17YE9xEUSWBCCpLuOu/xU5946YsP53Nz/DQ4wAUNN6+dANnhzDEtZDk5b+D68XbsrX2YBT3aA8moIQgYtzlimwg9Suefarodqr7yr6iZc4SJaLDVF1S0sRdCQNEAkaOFqhTcckvMovjvE3bdmAR2U1J8BGYvvFDAqzp05mZ3R9T7HwZ7ShsaxgBKs5j143cUspbwGfYikoS8QH+qXfYgZxkkFycW66NbabP+GAtiHdgUN4CRgmU/YiLw438O7iyrO57g0CkR9CXEKIIlX6BkWKC0rasGdNnYvMYI730fZZkLQabbsMQK1Gxrc3l2MMwIDAQAB
+
+
+
+aliyun-call:
+  region-id: cn-hangzhou
+  ak: LTAIn9nFfElnsaFz
+  sk: QJnYCTa0ykm19qHUJ7bovb910vvZbj
+  sign-name: 评优购物
+  template-code: SMS_165692433
+
+
+server:
+  port: 8981
